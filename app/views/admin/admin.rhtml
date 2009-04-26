@@ -1,0 +1,105 @@
+
+<div id="pageTitle">Import Spreadsheet</div><br>
+
+<div class="mainText">
+
+  <% form_tag({:action => 'update_users'}, :multipart => true)  do %>
+  CSV File: <%= file_field_tag "file"  %><br><br>
+  <%= submit_tag "Upload file" %>
+  <% end  %>
+
+</div><br>
+
+<div id="pageTitle">Export Spreadsheet</div><br>
+
+<div class="mainText">
+<%= link_to "Export list of all users", :action => 'export_to_csv' %>
+</div>
+
+<br><br>
+
+<div id="pageTitle">Export Email Addresses</div><br>
+
+<div class="mainText">
+<%= link_to "Export list of all users", :action => 'export_emails' %>
+</div>
+
+<!--
+
+<br><br>
+<div id="pageTitle">Add SMF Stocks</div><br>
+<div class="mainText">
+	To add multiple stocks to list of SMF stocks, write each symbol separated by a space.
+</div><br>
+<% form_tag :action => 'add_stock' do %>
+<table>
+	<tr>
+		<td align="right">Stock symbols:</td>
+		<td><%= text_field(:stock, "symbol") %></td>
+		<td align="right"><%= submit_tag "Add stocks" %></td>
+	</tr>
+</table>
+<% end %>
+
+<br>
+<div id="pageTitle">Remove SMF Stocks</div><br>
+<div class="mainText">
+	To remove multiple stocks from list of SMF stocks, write each symbol separated by a space.
+</div><br>
+<% form_tag :action => 'remove_stock' do %>
+<table>
+	<tr>
+		<td align="right">Stock symbols:</td>
+		<td><%= text_field(:stock, "symbol") %></td>
+		<td><%= submit_tag "Remove stocks" %></td>
+	</tr>
+</table>
+<% end %>
+
+<br>
+<div id="pageTitle">Send Email to All Users (temporarily inactive)</div><br>
+<% form_tag :action => "send_emails" do %>
+<table>
+	<tr>
+		<td align="right">From:</td>
+		<td><%= select(:email, "from_email", [["Cooley, Philip", "Cooley, Philip <pcooley@trinity.edu>"], 
+			["Hughes, Samuel", "Hughes, Samuel <Samuel.Hughes@trinity.edu>"], 
+			["Penland, Paul", "Penland, Paul <Paul.Penland@trinity.edu>"], 
+			["Gates, Stephanie", "Gates, Stephanie <Stephanie.Gates@trinity.edu>"]]) %></td>
+	</tr>
+	<tr>
+		<td align="right">Subject:</td>
+		<td><%= text_field(:email, "subject") %></td>
+	</tr>
+	<tr>
+		<td valign="top" align="right">Body:</td>
+		<td><%= text_area(:email, "message", :cols => "50", :rows => "15") %></td>
+	</tr>
+	<tr>
+		<td><%= submit_tag "Send Message" %></td>
+		<td></td>
+	</tr>
+</table>
+<% end %>
+
+<br>
+<div id="pageTitle">Send Message to All Users</div><br>
+
+<% form_tag :action => "send_all_users_a_message" do %>
+<table>
+	<tr>
+		<td align="right">Subject:</td>
+		<td><%= text_field(:message, "subject") %></td>
+	</tr>
+	<tr>
+		<td valign="top" align="right">Message:</td>
+		<td><%= text_area(:message, "message", :cols => "50", :rows => "8") %></td>
+	</tr>
+	<tr>
+		<td><%= submit_tag "Send Message" %></td>
+		<td></td>
+	</tr>
+</table>
+<% end %>
+
+-->

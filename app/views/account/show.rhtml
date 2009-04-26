@@ -1,0 +1,162 @@
+<div id="pageTitle">
+	Profile
+	<% if session[:user_id].to_i == @user.id and @user.privilege == 5 %>
+	<font class="insidePageTitle">(my profile - admin)</font>
+	<% elsif session[:user_id].to_i == @user.id %>
+	<font class="insidePageTitle">(my profile)</font>
+	<% end %>
+
+</div><br>
+
+<table class="mainTable">
+	<tr>
+		<td valign="top" rowspan="18">
+			<% if @user.picture %>
+			<img width="250" src="<%= url_for(:controller => "picture", 
+				:action => "picture", :id => @user.picture.id) %>"/>
+			<% else %>
+				<%= image_tag "/images/photo.jpg", :size => "250x250", :border => 1 %>
+			<% end %>
+		</td>
+	</tr>
+	<tr>
+		<td><b>Contact Info</b></td>
+	</tr>
+	<tr>
+		<td class="left">Name:</td>
+		<% if @user.first_name %>
+		<td class="right"><%= link_to @person_name, :action => 'search', :id => 'name',
+			:search_one => @user.first_name, :search_two => @user.last_name %></td>
+		<% end %>
+	</tr>
+	<tr>
+		<td class="left">Email:</td>
+		<% if @user.email %>
+		<td class="right"><%= link_to @user.email, :action => 'search', :id => 'email',
+			:search_one => @user.email %></td>
+		<% end %>
+	</tr>
+	<tr>
+		<td class="left">Address:</td>
+		<% if @user.address %>
+		<td class="right"><%= link_to @user.address, :action => 'search', :id => 'address',
+			:search_one => @user.address %></td>
+		<% end %>
+	</tr>
+	<tr>
+		<td class="left">City:</td>
+		<% if @user.city %>
+		<td class="right"><%= link_to @user.city, :action => 'search', :id => 'city',
+			:search_one => @user.city %></td>
+		<% end %>
+	</tr>
+	<tr>
+		<td class="left">State:</td>
+		<% if @user.state %>
+		<td class="right"><%= link_to @user.state, :action => 'search', :id => 'state',
+			:search_one => @user.state %></td>
+		<% end %>
+	</tr>
+	<tr>
+		<td class="left">Mobile No:</td>
+		<% if @user.mobile_phone %>
+		<td class="right"><%= link_to @user.mobile_phone, :action => 'search',
+			:id => 'mobile_phone', :search_one => @user.mobile_phone %></td>
+		<% end %>
+	</tr>
+	<tr>
+		<td><br><b>Status Info</b></td>
+	</tr>
+	<tr>
+		<td class="left">Grad Year:</td>
+		<% if @user.graduation_year %>
+		<td class="right"><%= link_to @user.graduation_year.year, :action => 'search',
+			:id => 'graduation_year', :search_one => @user.graduation_year %></td>
+		<% end %>
+	</tr>
+	<tr>
+		<td class="left">Grad School:</td>
+		<% if @user.grad_school %>
+		<td class="right"><%= link_to @user.grad_school, :action => 'search',
+			:id => 'grad_school', :search_one => @user.grad_school %></td>
+		<% end %>
+	</tr>
+	<tr>
+		<td class="left">Major(s):</td>
+		<% if @user.major %>
+		<td class="right"><%= link_to @user.major, :action => 'search',
+			:id => 'major', :search_one => @user.major %></td>
+		<% end %>
+	</tr>
+	<tr>
+		<td class="left">Status:</td>
+		<% if @user.employment_status %>
+		<td class="right"><%= link_to @user.employment_status, :action => 'search',
+			:id => 'employment_status', :search_one => @user.employment_status %></td>
+		<% end %>
+	</tr>
+	<tr>
+		<td class="left">Employer:</td>
+		<% if @user.employer %>
+		<td class="right"><%= link_to @user.employer, :action => 'search',
+			:id => 'employer', :search_one => @user.employer %></td>
+		<% end %>
+	</tr>
+	<tr>
+		<td class="left">Previous Employer(s):</td>
+		<% if @user.previous_employer %>
+		<td class="right"><%= link_to @user.previous_employer, :action => 'search',
+			:id => 'previous_employer', :search_one => @user.previous_employer %></td>
+		<% end %>
+	</tr>
+	<tr>
+		<td class="left">Job Title:</td>
+		<% if @user.job_title %>
+		<td class="right"><%= link_to @user.job_title, :action => 'search',
+			:id => 'job_title', :search_one => @user.job_title %></td>
+		<% end %>
+	</tr>
+	<tr>
+		<td class="left">Job Description:</td>
+		<% if @user.job_description %>
+		<td class="right"><%= @user.job_description %></td>
+		<% end %>
+	</tr>
+	<tr>
+		<td class="left">Resume:</td>
+		<% if resume = @user.resume %>
+		<% if @user.resume.public? %>
+		<td class="right"><%= link_to @user.resume.name, :controller => 'resume',
+			:action => 'resume', :id => @user.resume %></td>
+		<% else %>
+		<td class="right"><%= link_to "Request a copy", :controller => 'message',
+			:action => 'compose', :id => @user.id, :last_page => 'show' %></td>
+		<% end %>
+		<% end %>
+	</tr>
+</table>
+<br>
+
+<div class="profileMessages">
+	Messages:<br><br>
+	<% for message in @profile_messages %>
+		<% viewer = User.find(message.viewer_id) %>
+		<!-- <% if viewer.picture %>
+			<img width="50" src="<%= url_for(:controller => "picture", 
+				:action => "picture", :id => viewer.picture.id) %>">
+		<% else %>
+			<%= image_tag "/images/photo.jpg", :size => "49x40", :border => 1 %>
+		<% end %> -->
+		<%= link_to message.message, :action => 'show', :id => message.viewer_id %>
+		<% if viewer.id == session[:user_id].to_i or @user.id == session[:user_id].to_i %>
+			<%= link_to '(delete)', :action => 'delete_profile_message', :id => message.id %>
+		<% end %>
+		<br><br>
+	<% end %>
+	<br>
+	<% form_tag :action => 'profile_message_update' do %>
+		<%= hidden_field :update, "user_id", :value => params[:id] %>
+		<%= text_area :update, "message", :rows => '4' %><br>
+		<%= submit_tag "Post" %>
+	<% end %>
+</div>

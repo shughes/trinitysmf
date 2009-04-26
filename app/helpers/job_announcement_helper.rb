@@ -1,0 +1,2 @@
+module JobAnnouncementHelper
+end

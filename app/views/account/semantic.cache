@@ -1,0 +1,27 @@
+;; Object account/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "account/"
+  :tables (list 
+   (semanticdb-table "show.rhtml"
+    :major-mode 'html-mode
+    :tags 'nil
+    :file "show.rhtml"
+    :pointmax 4656
+    )
+   (semanticdb-table "admin.rhtml"
+    :major-mode 'html-mode
+    :tags 'nil
+    :file "admin.rhtml"
+    :pointmax 422
+    )
+   (semanticdb-table "edit.rhtml"
+    :major-mode 'html-mode
+    :tags 'nil
+    :file "edit.rhtml"
+    :pointmax 2752
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0beta3"
+  :semanticdb-version "2.0beta3"
+  )

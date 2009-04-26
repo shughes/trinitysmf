@@ -1,0 +1,5 @@
+Delete message sent from 
+<%= "#{@from_user.first_name} #{@from_user.last_name}" %>?<br><br>
+<% form_tag do  %>
+<%= submit_tag 'Yes, delete' %>
+<% end %>

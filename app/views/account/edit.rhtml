@@ -1,0 +1,152 @@
+<%= error_messages_for 'user' %>
+<%= error_messages_for 'picture' %>
+
+<div id="pageTitle">Edit Profile
+	<font class="insidePageTitle">
+		<%= link_to "change password", :action => "edit", :id => "password" %> | 
+		<%= link_to "upload picture", :action => "edit", :id => "picture" %> |  
+		<%= link_to "remove picture", :controller => 'picture', 
+			:action => "delete", :id => @user.id %> | 
+		<%= link_to "upload resume", :action => "edit", :id => "resume" %>*
+	</font>
+</div><br>
+
+<% if params[:id] == "resume" %>
+<div class="mainText">
+	<% form_tag({:controller => 'resume', :action => 'save'}, :multipart => true) do %>
+	New resume: <%= file_field("resume", "resume") %><br><br>
+	<%= submit_tag("Upload resume") %>
+	<% end %>
+</div><hr><br>
+<% end %>
+
+<% if params[:id] == "picture" %>
+<div class="mainText">
+	<% form_tag({:controller => 'picture', :action => 'save'}, :multipart => true) do %>
+	New picture: <%= file_field("picture", "picture") %><br><br>
+	<%= submit_tag("Upload picture") %>
+	<% end %>
+</div><hr><br>
+<% end %>
+
+<% form_tag :action => 'update' do %>
+
+<% if params[:id] == "password" %>
+<table class="mainTable">
+	<tr>
+		<td class="left">New password:</td>
+		<td class="middle"><%= password_field("user", "password") %></td>
+	</tr>
+	<tr>
+		<td class="left">Confirm password:</td>
+		<td class="middle"><%= password_field("user", "confirm_password") %></td>
+	</tr>
+</table>
+<hr><br>
+<% end %>
+<table class="mainTable">
+	<tr>
+		<td><b>Contact Info<b></td>
+	</tr>
+	<tr>
+		<td class="left">Login name:</td>
+		<td class="middle"><%= @user.login_name %></td>
+	</tr>
+	<tr>
+		<td class="left">First name:</td>
+		<td class="middle"><%= text_field(:user, "first_name") %></td>
+	</tr>	
+	<tr>
+		<td class="left">Last name:</td>
+		<td class="middle"><%= text_field(:user, "last_name") %></td>
+	</tr>
+	<tr>
+		<td class="left">Email:</td>
+		<td class="middle"><%= text_field(:user, "email") %></td>
+	</tr>		
+	<tr>
+		<td class="left">Address:</td>
+		<td class="middle"><%= text_field(:user, "address") %></td>
+	</tr>
+	<tr>
+		<td class="left">City:</td>
+		<td class="middle"><%= text_field(:user, "city") %></td>
+	</tr>
+	<tr>
+		<td class="left">State:</td>
+		<td class="middle"><%= select(:user, "state", get_states, 
+			:include_blank => true ) %></td>
+	</tr>
+	<tr>
+		<td class="left">Mobile No:</td>
+		<td class="middle"><%= text_field(:user, "mobile_phone") %></td>
+	</tr>
+	<tr>
+		<td><br><b>Status Info<b></td>
+	</tr>
+	<tr>
+		<td class="left">Grad Year:</td>
+		<% start_year = Date.today.year+5 %>
+		<% end_year = Date.today.year-40 %>
+		<td class="middle"><%= date_select("user", "graduation_year", 
+			:end_year => end_year, :start_year => start_year, 
+			:discard_day => true, 
+			:discard_month => true, :include_blank => true) %></td>		
+	</tr>
+	<tr>
+		<td class="left">Grad School:</td>
+		<td class="middle"><%= text_field(:user, "grad_school") %></td>
+	</tr>
+	<tr>
+		<td class="left">Major(s):</td>
+		<td class="middle"><%= text_field(:user, "major") %></td>
+	</tr>
+	</tr>
+	<tr>
+		<td class="left">Status:</td>
+		<td class="middle"><%= select(:user, "employment_status", [['Employed', 'Employed'], 
+			['Looking for employment', 'Looking for employment'], ['Looking for employees', 'Looking for employees']], :include_blank => true) %></td>
+	</tr>
+	<tr>
+		<td class="left">Employer:</td>
+		<td class="middle"><%= text_field(:user, :employer) %></td>
+	</tr>
+	<tr>
+		<td class="left">Previous Employer(s):</td>
+		<td class="middle"><%= text_field(:user, "previous_employer") %></td>
+	</tr>
+	<tr>
+		<td class="left">Job Title:</td>
+		<td class="middle"><%= text_field(:user, "job_title") %></td>
+	</tr>
+	<tr>
+		<td valign="top" class="left">Job Description:</td>
+		<td class="middle"><%= text_area(:user, "job_description", :cols => "30", :rows => "4") %></td>
+	</tr>
+	<tr>
+		<td class="left">Resume:</td>
+		<td class="middle">
+			<% if @resume %>
+			<%= @resume.name %>
+			<%= select("resume", "public", [['public', '1'], 
+			['private', '0']]) %>*
+			<% else %>
+			(No resume uploaded)
+			<% end %></td>
+		<td></td>
+	</tr>
+	<tr><td class="left"><%= submit_tag 'Update' %></td></tr>
+</table>
+<% end %>
+<br>
+<div class="mainText">
+	*Things to know about adding a resume:
+	<ul>
+	<li>Once a resume is uploaded, you have the option to make it private.
+	Doing so, people will only see it upon request.</li>
+	<li>For now, the only way to delete an uploaded resume is to replace it by  
+	uploading a blank text file.</li>
+	</ul>
+
+
+</div>

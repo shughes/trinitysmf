@@ -1,0 +1,60 @@
+<div id="sideUnderline">
+   <%= link_to "Search Profiles", :controller => 'account', :action => 'search_form' %>
+</div>
+
+<div id="sideUnderline">
+   <%= link_to "Home", :controller => 'account', :action => 'home' %>
+</div>
+
+<div id="sideUnderline">
+   <%= link_to "Stocks", :controller => 'stock', :action => 'search_form' %>
+</div>
+<div id="sideUnderline">
+   <%= link_to "My Profile", :controller => 'account', :action => 'show',
+   :id => session[:user_id] %>
+   <%= link_to "(edit)", :controller => 'account', :action => 'edit' %>
+</div>
+
+<% resumes = ResumeViewer.find(:all, 
+:conditions => ["viewer_id = ? and viewed = 0", session[:user_id].to_i]) %>
+<div id="sideUnderline">
+   <%= link_to "Resumes", :controller => 'resume', :action => 'resumes' %>
+   <% if resumes.length > 0 %>
+   (<%= resumes.length %>)
+   <% end %>
+</div>
+<% messages = Message.find(:all,
+:conditions => ["user_id = ? and has_read = 0 and sent_folder = 0", session[:user_id]]) %>
+<div id="sideUnderline">
+   <%= link_to "Messages", :controller => 'message',
+   :action => 'inbox' %>
+   <% if messages.length > 0 %>
+   (<%= messages.length %>)
+   <% end %>
+</div>
+
+<div id="sideUnderline">
+   <%= link_to "Job Announcements", :controller => 'job_announcement' %>
+</div>
+
+<div id="sideUnderline">
+   <%= link_to "Announcements", :controller => 'update' %>
+</div>
+
+<div id="sideUnderline">
+   <%= link_to "Who created this?", :controller => 'account', :action => 'did_you_notice' %>
+</div>
+<% user = User.find(session[:user_id]) %>
+<% if user.privilege > 0 %>
+<div id="sideUnderline">
+   <%= link_to "Admin", :controller => 'admin', :action => 'admin' %>
+</div>
+<% end %>
+<div id="sideUnderline">
+   <%= link_to "Logout", :controller => 'login', :action => 'logout' %>
+</div>
+<br>
+<% form_tag :controller => 'account', :action => 'search', :id => 'all' do %>
+<%= text_field "user", "first_name", :value => '', :class => 'quickSearch'  %>
+<%= submit_tag 'Quick Search', :class => 'quickSearchSubmit' %>
+<% end %><br><br>

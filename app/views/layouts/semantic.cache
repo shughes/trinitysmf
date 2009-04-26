@@ -1,0 +1,21 @@
+;; Object layouts/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "layouts/"
+  :tables (list 
+   (semanticdb-table "_account_menu.rhtml"
+    :major-mode 'html-mode
+    :tags 'nil
+    :file "_account_menu.rhtml"
+    :pointmax 900
+    )
+   (semanticdb-table "account.rhtml"
+    :major-mode 'html-mode
+    :tags '(("Account: <%= controller.action_name %>" section nil nil [16 115]) ("SMF Network" section nil nil [115 120]))
+    :file "account.rhtml"
+    :pointmax 360
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0beta3"
+  :semanticdb-version "2.0beta3"
+  )

@@ -1,0 +1,35 @@
+<div id="pageTitle">
+	Announcement
+	<font class="insidePageTitle">
+  	<%= link_to "back", :action => 'index' %> |
+  	<%= link_to "post", :action => 'post' %>
+	  <% if @update.user_id == session[:user_id].to_i %>
+	  | <%= link_to "edit", :action => 'edit', :id => @update.id %>
+	  <% end %>
+	</font>
+</div><br>
+
+<table class="mainTable">
+<tr>
+	<td class="left">Subject:</td>
+	<td class="middle"><%= @update.subject %></td>
+</tr>
+<tr>
+	<td class="left">Posted by:</td>
+	<td class="middle"><%= "#{@update.user.first_name} #{@update.user.last_name}" %></td>
+</tr>
+<tr>
+	<td class="left">Date Posted:</td>
+	<td class="middle"><%= @update.date_sent %></td>
+</tr>
+</table>
+<br>
+<div class="messageText"><%= @update.message %></div>
+
+
+<br>
+<% if @update.user_id == session[:user_id].to_i %>
+<div class="mainText">
+<%= link_to "save changes", :action => 'edit', :id => @update.id %>
+</div>
+<% end %>

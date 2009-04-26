@@ -1,0 +1,15 @@
+;; Object message/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "message/"
+  :tables (list 
+   (semanticdb-table "inbox.rhtml"
+    :major-mode 'html-mode
+    :tags 'nil
+    :file "inbox.rhtml"
+    :pointmax 935
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0beta3"
+  :semanticdb-version "2.0beta3"
+  )

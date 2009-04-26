@@ -1,0 +1,21 @@
+;; Object update/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "update/"
+  :tables (list 
+   (semanticdb-table "index.rhtml"
+    :major-mode 'html-mode
+    :tags 'nil
+    :file "index.rhtml"
+    :pointmax 203
+    )
+   (semanticdb-table "post_update.rhtml"
+    :major-mode 'html-mode
+    :tags 'nil
+    :file "post_update.rhtml"
+    :pointmax 44
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0beta3"
+  :semanticdb-version "2.0beta3"
+  )

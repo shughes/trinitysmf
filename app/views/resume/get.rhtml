@@ -1,0 +1,6 @@
+<%= error_messages_for("resume") %>
+<%= form_tag({:action => 'save'}, :multipart => true) %>
+Comment: <%= text_field("resume", "comment") %>
+<br>Upload your picture: <%= file_field("resume", "resume") %><br>
+<%= submit_tag("Upload file") %>
+<%= end_form_tag %>

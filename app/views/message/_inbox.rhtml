@@ -1,0 +1,51 @@
+<% if @messages.length > 0 %>
+<table class="mainTable">
+	<tr>
+		<td class="left">From:</td>
+		<td class="middle">Date sent:</td>
+		<td class="right">Subject:</td>
+		<td></td>
+	</tr>
+	<% for message in @messages %>
+	<% sender = User.find(message.from_id)%>
+	<% sender_name = "#{sender.first_name} #{sender.last_name}"%>
+	<tr>
+		<td class="left">
+			<% if message.has_read == 0 and params[:action] != 'home' %>
+				<div id="newItemSent">
+			<% end %>
+			<%= link_to sender_name, :controller => 'account', 
+			:action => 'show', :id => message.from_id %>
+		</td>
+		<td class="middle">
+			<% if message.has_read == 0 and params[:action] != 'home' %>
+				<div id="newItemSent">
+			<% end %>
+			<%= message.date_sent %>
+		</td>
+		<td class="right">
+			<% if message.has_read == 0 and params[:action] != 'home' %>
+				<div id="newItemSent">
+			<% end %>
+			<%= message.subject %>
+		</td>
+		<td class="right">
+			<% if message.has_read == 0 and params[:action] != 'home' %>
+				<div id="newItemSent">
+			<% end %>
+			<%= link_to "read", :controller => 'message', :action => 'read', 
+			:id => message.id %> | 
+			<%= link_to "delete", :action => 'delete', :id => message.id %>
+		</td>
+	</tr>
+	<% end %>
+</table>
+<% else %>
+<div class="mainText">
+	<% if params[:action] == 'home' %>
+	(no new messages)
+	<% else %>
+	(no messages)
+	<% end %>
+</div>
+<% end %>

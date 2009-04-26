@@ -1,0 +1,24 @@
+<div id="pageTitle">Post Stock Tip</div><br>
+
+<table class="mainTable">
+
+<% form_tag do %>
+<tr>
+	<td class="left">Subject:</td>
+	<td class="middle"><%= text_field(:update, "subject") %></td>
+</tr>
+<tr>
+	<td valign="top" class="left">Message:</td>
+	<td class="middle"><%= text_area(:update, "message") %></td>
+</tr>
+<tr>
+	<td class="left"><%= submit_tag "Post" %></td>
+</tr>	
+<% end %>
+
+</table>
+
+<br>
+<div class="mainText">
+	*Choose date for when post will no longer show on the updates page. 
+</div>

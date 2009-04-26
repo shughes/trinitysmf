@@ -1,0 +1,7 @@
+<div class="mainText">
+	Please confirm decision to send resume to 
+	<%= @user.first_name %> <%= @user.last_name %>.<br><br>
+	<% form_tag do %>
+	<%= submit_tag "Yes, I confirm" %>
+	<% end %>
+</div>

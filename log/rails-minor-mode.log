@@ -1,0 +1,71 @@
+2006/04/27 20:37:02: 
+alumni> ruby script/destroy  controller admin_email 
+          rm  app/helpers/admin_email_helper.rb
+          rm  test/functional/admin_email_controller_test.rb
+          rm  app/controllers/admin_email_controller.rb
+    notempty  test/functional
+    notempty  test
+    notempty  app/views/admin_email
+    notempty  app/views
+    notempty  app
+    notempty  app/helpers
+    notempty  app
+    notempty  app/controllers
+    notempty  app
+
+2006/04/27 20:39:01: 
+alumni> ruby script/destroy  model admin_email 
+          rm  test/fixtures/admin_emails.yml
+          rm  test/unit/admin_email_test.rb
+          rm  app/models/admin_email.rb
+    notempty  test/fixtures
+    notempty  test
+    notempty  test/unit
+    notempty  test
+    notempty  app/models
+    notempty  app
+
+2006/04/27 20:55:19: 
+alumni> ruby script/generate  controller Admin  
+      exists  app/controllers/
+      exists  app/helpers/
+      create  app/views/admin
+      exists  test/functional/
+      create  app/controllers/admin_controller.rb
+      create  test/functional/admin_controller_test.rb
+      create  app/helpers/admin_helper.rb
+
+2006/04/29 00:13:37: 
+alumni> ruby script/generate  model update 
+      exists  app/models/
+      exists  test/unit/
+      exists  test/fixtures/
+      create  app/models/update.rb
+      create  test/unit/update_test.rb
+      create  test/fixtures/updates.yml
+
+2006/04/29 00:16:58: 
+alumni> ruby script/generate  controller update  
+      exists  app/controllers/
+      exists  app/helpers/
+      create  app/views/update
+      exists  test/functional/
+      create  app/controllers/update_controller.rb
+      create  test/functional/update_controller_test.rb
+      create  app/helpers/update_helper.rb
+
+2006/04/29 00:23:54: 
+alumni> ruby script/destroy  controller message_board 
+          rm  app/helpers/message_board_helper.rb
+          rm  test/functional/message_board_controller_test.rb
+          rm  app/controllers/message_board_controller.rb
+    notempty  test/functional
+    notempty  test
+    notempty  app/views/message_board
+    notempty  app/views
+    notempty  app
+    notempty  app/helpers
+    notempty  app
+    notempty  app/controllers
+    notempty  app
+

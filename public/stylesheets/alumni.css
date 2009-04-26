@@ -1,0 +1,324 @@
+body { background-color: #fff; color: #333; }
+
+body, p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   12px;
+  line-height: 16px;
+}
+
+input.quickSearchSubmit {
+	float: left;
+}
+
+input.quickSearch {
+	width: 100%;
+}
+
+h1 {
+  font-weight: normal;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a { 
+  color: gray; 
+  text-decoration: none;
+}
+
+a:visited { 
+  color: gray; 
+  text-decoration: none;
+}
+
+a:hover { 
+  color: gray;
+  text-decoration: underline;
+}
+
+font.insidePageTitle {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   12px;
+  line-height: 16px;
+}
+
+table.mainTable {
+}
+
+
+table.mainTable td.right,
+table.mainTable td.middle {
+	vertical-align: top;
+	padding-left: 15px;
+	padding-right: 5px;
+}
+
+table.mainTable td.description {
+	padding-left: 15px;
+	width: 300px;
+}
+
+table.mainTable td.left {
+	vertical-align: top;
+  padding-left: 5px;
+	width: 145px;
+  text-align: left;
+}
+
+table.stocks {
+
+}
+
+table.stocks td.left {
+	line-height: 10px;	
+	text-align: left;
+	font-size: 10px;
+	padding: 0px;
+}
+
+table.stocks td.middle {
+	line-height: 10px;	
+	text-align: left;
+	font-size: 10px;
+	padding: 0px;
+}
+
+table.stocks td.right {
+	line-height: 10px;	
+	text-align: right;
+	font-size: 10px;
+  padding-left: 3px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-top: 0px;
+}
+
+div.stocks {
+	width: 100px;
+	font-size: 10px;
+}
+
+div.profileMessages {
+  padding: 5px;
+  padding-left: 10px;
+  border: 1px solid;
+  border-color: #cccccc;
+}
+
+
+div.bottomNote,
+div.loginNote {
+  width: 350px;
+  font-size: 10px;
+}
+
+div.messageText {
+	border: 1px solid;
+	margin: 5px;
+  padding: 10px;
+	border-color: #701112;
+}
+
+div.searchResults {
+  padding-left: 5px;
+}
+
+div.mainText {
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+div.uploadStatus {
+  margin: 5px;
+}
+
+div.progressBar {
+  margin: 5px;
+}
+
+div.progressBar div.border {
+  background-color: #fff;
+  border: 1px solid grey;
+  width: 100%;
+}
+
+div.progressBar div.background {
+  background-color: #333;
+  height: 18px;
+  width: 0%;
+}
+
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#alignRight {
+	padding-right: 40px;
+	text-align: right;
+}
+
+#globalnav {
+  /* width: 100%; */
+  padding: 0;
+  padding-top: 5px;
+  margin: 0;
+  margin-bottom: 10px;
+  list-style: none;
+  line-height: 1em;
+}
+
+#globalnav li {
+  float: left;
+  margin: 0;
+  padding: 0;
+  padding-top: 1px;
+}
+
+#globalnav a {
+	display:block;
+	color:#444;
+	text-decoration:none;
+	font-weight:normal;
+	background:#ddd;
+	margin:0;
+	padding:0.25em 0.5em;
+	border-left:1px solid #fff;
+	border-top:1px solid #fff;
+	border-right:1px solid #aaa;
+}
+
+#globalnav A:hover {
+  background: #eee
+}
+
+#globalnav A:active,
+#globalnav A.here:link,
+#globalnav A.here:visited {
+	background: white;
+}
+
+#globalnav A.here:link,
+#globalnav A.here:visited {
+	position:relative;
+	z-index:102;
+}
+
+
+#banner {
+	width: 804px;
+  background: #701112;
+  padding-left: 12px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font: 20px "verdana";
+  color: #ebebeb;
+  text-align: left;
+}
+
+/* IE hack */
+* html #banner { width: 816px; }
+
+#sideUnderline {
+	padding-left: 2px;
+	border-bottom: 1px solid #cccccc;
+}
+
+#rightSide {
+	position: absolute;
+	left: 840px;
+	padding: 15px;
+	font-size: 10px;
+	line-height: 12px;
+}
+
+#main {
+  /*width: 764px;*/
+	width: 620px;
+  border-left: 1px solid;
+  border-bottom: 1px solid;
+  border-right: 1px solid;
+  margin-left: 164px;
+  /*margin-left: 0px;*/
+  padding: 15px;
+	padding-top: 25px;
+	padding-bottom: 25px;
+  border-color: #cccccc;
+  background: white;
+}
+
+/* IE hack */
+* html #main { width: 652px; }
+
+#pageTitle {
+	padding-top: 2px;
+	padding-bottom: 4px;
+  padding-left: 4px;
+  font-size: 16px;
+  border-top: 2px solid;
+  background: #ebebeb;
+  color: #701112;
+}
+
+#side {
+  position: absolute; 
+  width: 130px;
+  padding: 12px;
+  font-size: 10px;
+  line-height: 16px;
+  color: #701112;
+	left: 10;
+}
+
+#newItemSent {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* IE hack */
+* html #side { width: 164px; }
+
+#side a {
+  color: #701112;
+  font: sans-serif;
+}
+
+#side a:hover {
+  color: #701112;
+}
+
+#ErrorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#ErrorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#ErrorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#ErrorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+

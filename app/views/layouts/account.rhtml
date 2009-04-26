@@ -1,0 +1,36 @@
+<html>
+	<head>
+		<title>Trinity Student Managed Fund Network</title>
+		<!-- <title>Account: <%= controller.action_name %></title> -->
+		<%= stylesheet_link_tag 'alumni' %>
+	</head>
+	<body>
+		<div id="banner">Trinity Student Managed Fund Network
+			<!-- <%= render :partial => "layouts/account_menu_2" %> -->
+		</div>
+
+		<div id="side">
+			<%= render :partial => "layouts/account_menu" %>
+		</div>
+
+		<div id="rightSide">
+		</div>
+
+		<div id="main">
+			<p style="color: #701112"><%= flash[:notice] %></p>
+			<%= @content_for_layout %>
+
+			<br><br><br><br>
+			<center>
+				<div class="bottomNote">
+					Trinity Student Managed Fund Network was created by Samuel Hughes, 
+					a student at Trinity University. You may contact him at 
+					<a href="mailto:samuel.jennings@gmail.com">Samuel.Jennings@gmail.com</a>, or 
+					<%= link_to "click here", :controller => 'account', :action => 'show',
+					:id => 1 %> to see his network profile.
+				</div>
+			</center>
+		</div>
+
+	</body>
+</html>

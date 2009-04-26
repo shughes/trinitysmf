@@ -1,0 +1,54 @@
+<!--
+<div id="pageTitle">Add Personal Stocks</div><br>
+<div class="mainText">
+	To add multiple stocks to list of personal stocks, write each symbol separated by a space.
+</div><br>
+<% form_tag :action => 'add_stock' do %>
+<table>
+	<tr>
+		<td align="right">Stock symbols:</td>
+		<td><%= text_field(:stock, "symbol") %></td>
+		<td align="right"><%= submit_tag "Add stocks" %></td>
+	</tr>
+</table>
+<% end %>
+
+<br>
+<div id="pageTitle">Remove Personal Stocks</div><br>
+<div class="mainText">
+	To remove multiple stocks from list of personal stocks, write each symbol separated by a space.
+</div><br>
+<% form_tag :action => 'remove_stock' do %>
+<table>
+	<tr>
+		<td align="right">Stock symbols:</td>
+		<td><%= text_field(:stock, "symbol") %></td>
+		<td><%= submit_tag "Remove stocks" %></td>
+	</tr>
+</table>
+<% end %>
+-->
+
+<br>
+
+<div id="pageTitle">Stock Quotes</div><br>
+<div class="mainText">
+	For multiple stock quotes, enter each symbol separated by a space.<br><br>
+</div>
+
+<div class="mainText">
+<% form_tag :action => 'search' do %>
+Enter symbol: <%= text_field_tag :stock %>
+<%= submit_tag "Get quote" %>
+<% end %>
+</div>
+
+<br>
+
+<div id="pageTitle">Stock Tips
+	<font class="insidePageTitle">
+    <%= link_to 'post a tip', :action => 'post_tip' %> 
+  </font>
+</div><br>
+<%= render :partial => 'stock/stock_tips' %>
+<br>

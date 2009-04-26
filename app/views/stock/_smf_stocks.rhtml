@@ -1,0 +1,124 @@
+<% stocks = Stock.find :all, :conditions => ["id > 0 and user_id = ?", session[:user_id].to_i] %>
+<% stock_list = "" %>
+<% stocks.each {|stock| stock_list = stock_list+","+stock.symbol } %>
+<% quote_type = YahooFinance::StandardQuote %>
+
+
+<% count = 0 %>
+<% stocks = stock_quotes(stock_list) %>
+<table class="stocks">
+<% if stocks.size != 0 %>
+	<% stocks = stocks.sort %>
+	<tr>
+		<td class="left" colspan="3">
+			<u><b>Personal Stocks</b></u>			
+		</td>
+	</tr>
+	<% stocks.each {|key, value| %>
+
+		<% if count == 0 %>
+			<tr>
+				<td class="left" colspan="3">
+					<div class="mainText">
+						<i>(15 min. delay)</i><br><br>
+					</div>
+				</td>
+			</tr>
+			<% count = count + 1 %>
+		<% end %>
+
+		<tr>
+
+			<td class="left">
+				<b><%= value.symbol %></b> 
+			</td>
+
+			<td class="middle">
+				<b>
+					<% if value.changePoints < 0.0 %>
+					<font color="darkred"><%= value.lastTrade %></font>
+					<% elsif value.changePoints == 0.0 %>
+					<font color="CC9900"><%= value.lastTrade %></font>
+					<% else %>
+					<font color="green"><%= value.lastTrade %></font>
+					<% end %>
+				</b>
+			</td>
+
+			<td class="right">
+				<%= value.changePoints %><br>
+			</td>
+
+		</tr>
+
+	<% } %>
+<% else %>
+	<tr>
+		<td class="left" colspan="3">
+			<u><b>Personal Stocks</b></u><br><br>	
+		</td>
+	</tr>
+	<tr>
+		<td class="left" colspan="3">
+			<div class="stocks">
+				(stocks can be added in the "Stocks" menu link)
+			</div>
+		</td>
+	</tr>
+<% end %>
+
+
+
+<% stocks = Stock.find :all, :conditions => "id > 0 and user_id = -1" %>
+<% stock_list = "" %>
+<% stocks.each {|stock| stock_list = stock_list+","+stock.symbol } %>
+<% quote_type = YahooFinance::StandardQuote %>
+
+
+<% count = 0 %>
+<% stocks = stock_quotes(stock_list) %>
+<% stocks = stocks.sort %>
+
+	<tr><td><br></td></tr>
+
+	<tr>
+		<td class="left" colspan="3">
+			<u><b>Trinity SMF Stocks</b></u>			
+		</td>
+	</tr>
+	<% stocks.each { |key, value| %>
+
+		<% if count == 0 %>
+			<tr>
+				<td class="left" colspan="3">
+					<div class="mainText">
+						<i>(15 min. delay)</i><br><br>
+					</div>
+				</td>
+			</tr>
+			<% count = count + 1 %>
+		<% end %>
+
+		<tr>
+			<td class="left">
+				<b><%= value.symbol %></b> 
+			</td>
+			<td class="middle">
+				<b>
+					<% if value.changePoints < 0.0 %>
+					<font color="darkred"><%= value.lastTrade %></font>
+					<% elsif value.changePoints == 0.0 %>
+					<font color="CC9900"><%= value.lastTrade %></font>
+					<% else %>
+					<font color="green"><%= value.lastTrade %></font>
+					<% end %>
+				</b>
+			</td>
+			<td class="right">
+				<%= value.changePoints %><br>
+			</td>
+		</tr>
+	<% } %>
+</table>
+
+

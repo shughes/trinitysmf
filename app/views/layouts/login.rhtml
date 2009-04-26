@@ -1,0 +1,27 @@
+<html>
+<head>
+	<title>Trinity Student Managed Fund Network</title>
+	<!-- <title>Account: <%= controller.action_name %></title> -->
+	<%= stylesheet_link_tag 'alumni' %>
+</head>
+<body>
+	<div id="banner">Trinity Student Managed Fund Network</div>
+	<div id="columns">
+		<div id="side">
+			<%= link_to "Login", :controller => 'login', :action => 'login' %><br>
+		</div>
+	</div>
+
+	<div id="main">
+		<p style="color: #701112"><%= flash[:notice] %></p>
+		<%= @content_for_layout %>
+	</div>
+	<br><br>
+	<center>
+		<div class="loginNote">
+			Note for employers: If you wish to access information about Trinity SMF alumni,
+			e-mail Dr. Phillip Cooley at <a href="mailto:pcooley@trinity.edu">pcooley@trinity.edu</a>.
+		</div>
+	</center>
+</body>
+</html>

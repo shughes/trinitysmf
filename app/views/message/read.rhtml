@@ -1,0 +1,21 @@
+<div id="pageTitle">Message
+	<font class="insidePageTitle"><%= display_menu %></font>
+</div><br>
+
+<table class="mainTable">
+<tr>
+	<td class="middle">From:</td>
+	<td class="middle"><%= "#{@from_user.first_name} #{@from_user.last_name}" %></td>
+</tr>
+<tr>
+	<td class="middle">Subject:</td>
+	<td class="middle"><%= @message.subject %></td>
+</tr>
+<tr>
+	<td class="middle">Date Sent:</td>
+	<td class="middle"><%= @message.date_sent %></td>
+</tr>
+</table>
+<br>
+<div class="messageText"><%= @message.message %></div>
+<div class="mainText"><%= link_to "reply", :action => 'compose', :id => @from_user.id %></div>

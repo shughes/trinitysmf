@@ -1,0 +1,17 @@
+
+<div id="pageTitle">Search
+	<font class="insidePageTitle">
+		<%= link_to "all users", :action => 'search', :id => 'all_users' %> | 
+		<%= link_to "recently updated", :action => 'search', :id => 'rec_updated' %>
+	</font>
+</div><br>
+
+<div class="mainText">
+	Search may include name, email address, graduation year, job title, employer, 
+	mobile phone, and/or employment status (ex. "samuel 2007").<br><br>
+	
+	<% form_tag :action => 'search', :id => 'all' do %>
+	<%= text_field("user", "first_name") %>
+	<%= submit_tag 'Search' %>
+	<% end %>
+</div>

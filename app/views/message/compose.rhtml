@@ -1,0 +1,64 @@
+
+<div id="pageTitle">
+	Compose
+	<font class="insidePageTitle"><%= display_menu %></font>
+</div><br>
+
+<% if request.get? != true %>
+	<div class="mainText">	
+		<% search_helper %>
+		<% if @users.length == 0 %>
+			Sorry, your search returned no matches.
+		<% end %>
+		<% for temp_user in @users %>
+			<% user_name = "#{temp_user.first_name} #{temp_user.last_name}" %>
+			<%= link_to user_name, :id => temp_user %><br>
+		<% end %>
+	</div><br>
+<% end %>
+
+<div class="mainText">
+	<% form_tag :action => 'compose', :id => nil do %>
+	  Search user profile: <%= text_field "user", "first_name", :value => '' %>
+	  <%= submit_tag 'Search' %>
+	<% end %>
+</div>
+<% form_tag :action => 'send_message', :id => @to_user do %>
+<hr><br>
+
+<table class="mainTable">
+	<tr>
+		<td align="right">To:</td>
+		<td>
+			<% if @to_user %>
+				<%= link_to @to_name, :controller => 'account', :action => 'show', 
+					:id => @to_user %>
+			<% else %>
+				(search user profile above)
+			<% end %>
+		</td>
+	</tr>
+	<tr>
+		<td align="right">Subject:</td>
+		<% if params[:last_page] == 'show' %>
+			<td><%= text_field :message, "subject", :value => 'Request to view resume' %></td>
+		<% else %>
+			<td><%= text_field :message, "subject" %></td>
+		<% end %>
+	</tr>
+	<tr>
+		<td valign="top" align="right">Message:</td>
+		<% request_message = "This is a request made by "+
+		"#{@user.first_name} #{@user.last_name} to view your resume. "+
+		"Go to 'Resumes' in the left menu to send your resume." %>
+		<% if params[:last_page] == 'show' %>
+			<td><%= text_area :message, "message", :value => request_message %></td>
+		<% else %>
+			<td><%= text_area :message, "message" %></td>
+		<% end %>
+	</tr>
+	<tr>
+		<td></td><td><%= submit_tag 'Send'%></td>
+	</tr>
+</table>
+<% end %><br>

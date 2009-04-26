@@ -1,0 +1,23 @@
+<div id="pageTitle">Sent Messages
+	<font class="insidePageTitle"><%= display_menu %></font>
+</div><br>
+<table class="mainTable">
+	<tr>
+		<td class="left">To</td>
+		<td class="middle">Date sent</td>
+		<td class="right">Subject</td>
+		<td></td>
+	</tr>
+	<% for message in @messages %>
+	<% receiver = User.find(message.user_id)%>
+	<% receiver_name = "#{receiver.first_name} #{receiver.last_name}"%>
+	<tr>
+		<td class="left"><%= link_to receiver_name, :controller => 'account', 
+			:action => 'show', :id => message.from_id %></td>
+		<td class="middle"><%= message.date_sent %></td>
+		<td class="right"><%= message.subject %></td>
+		<td class="right"><%= link_to "read", :action => 'read', :id => message.id, :sent_folder => 1 %> | 
+			<%= link_to "delete", :action => 'delete', :id => message.id, :sent_folder => 1 %></td>
+	</tr>
+	<% end %>
+</table>

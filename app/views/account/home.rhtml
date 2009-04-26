@@ -1,0 +1,36 @@
+
+<div id="pageTitle">New Messages
+	<font class="insidePageTitle"><%= link_to "go to messages", :controller => 'message', 
+		:action => 'inbox' %></font>
+</div><br>
+<%= render :partial => 'message/inbox' %>
+<br><br>
+
+<div id="pageTitle">New Resumes
+	<font class="insidePageTitle"><%= link_to "go to resumes", :controller => 'resume', 
+		:action => 'resumes' %></font>
+</div><br>
+<%= render :partial => 'resume/resumes' %>
+<br><br>
+
+<div id="pageTitle">Recent Job Announcements 
+	<font class="insidePageTitle"><%= link_to "go to job announcements", :controller => 'job_announcement' %></font>
+</div><br>
+<%= render :partial => 'job_announcement/job_announcement' %>
+<br><br>
+
+
+<div id="pageTitle">Recent Announcements
+	<font class="insidePageTitle"><%= link_to "go to announcements", :controller => 'update' %></font>
+</div><br>
+<%= render :partial => 'update/announcements' %>
+<br><br>
+
+<div id="pageTitle">Recent Stock Tips
+	<font class="insidePageTitle"><%= link_to "go to stocks", :controller => 'stock',
+		:action => 'search_form' %></font>
+</div><br>
+<%= render :partial => 'stock/stock_tips' %>
+<br><br>
+
+

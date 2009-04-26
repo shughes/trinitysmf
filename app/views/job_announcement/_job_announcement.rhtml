@@ -1,0 +1,26 @@
+<% if @jobs.length > 0 %>
+
+<div class="mainText">
+<% for update in @jobs %>
+<%= link_to update.subject, :controller => 'job_announcement', :action => 'read', :id => update.id %> 
+<% if update.user_id == session[:user_id].to_i %>
+<%= link_to "(edit ", :controller => 'job_announcement', :action => 'edit', :id => update.id %>
+|
+<%= link_to " delete)", :controller => 'job_announcement', :action => 'delete', :id => update.id %>
+
+<% end %>
+<br>
+posted by <%= link_to "#{update.user.first_name} #{update.user.last_name}", :controller => 'account', :action => 'show', :id => update.user.id %> 
+on <%= update.date_sent %><br><br>
+<% end %>
+</div>
+
+<% else %>
+<div class="mainText">
+	<% if params[:action] == 'home' %>
+	(no new announcements)
+	<% else %>
+	(no announcements)
+	<% end %>
+</div>
+<% end %>

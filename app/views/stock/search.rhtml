@@ -1,0 +1,40 @@
+<div id="pageTitle">
+	Stock Quotes
+	<font class="insidePageTitle">
+		<%= link_to 'new quote', :action => 'search_form' %>
+	</font>
+</div><br>
+
+<% @quotes.each {|key,value| %>
+
+<table class="mainTable">
+	<tr>
+		<td class="left">Symbol:</td>
+		<td class="middle"><%= value.symbol %></td>
+	</tr>
+	<tr>
+		<td class="left">Company:</td>
+		<td class="middle"><%= value.name %></td>
+	</tr>
+	<tr>
+		<td class="left">Previous Close:</td>
+		<td class="middle"><%= value.previousClose %></td>
+	</tr>
+	<tr>
+		<td class="left">Price (as of <%= value.time %>):</td>
+		<td class="middle"><%= value.lastTrade %></td>
+	</tr>
+	<tr>
+		<td class="left">Change:</td>
+		<td class="middle"><%= value.changePoints %></td>
+	</tr>
+	<tr>
+		<td class="left">Day Range:</td>
+		<td class="middle"><%= value.dayRange %></td>
+	</tr>
+
+</table>
+<br><br>
+
+<% } %>
+

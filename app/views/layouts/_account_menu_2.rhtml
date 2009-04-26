@@ -1,0 +1,77 @@
+<% user = User.find(session[:user_id]) %>	
+
+<ul id="globalnav">
+	<% if params[:action] == 'home' %>
+		<li><%= link_to "Home", {:controller => 'account', :action => 'home'}, 
+			:class => 'here' %></li>
+	<% else %>
+		<li><%= link_to "Home", {:controller => 'account', :action => 'home'} %></li> 
+	<% end %>
+	
+	<% if params[:action] == 'search_form' and params[:controller] == 'account' %>
+		<li><%= link_to "Search", {:controller => 'account', :action => 'search_form'}, 
+			:class => 'here' %></li>
+	<% else %>
+		<li><%= link_to "Search", {:controller => 'account', 
+			:action => 'search_form'} %></li> 
+	<% end %>
+	
+	<% if params[:action] == 'show' and params[:controller] == 'account'%>
+		<li><%= link_to "My Profile", 
+			{:controller => 'account', :action => 'show', :id => session[:user_id].to_i}, 
+			:class => 'here' %></li>
+	<% else %>
+		<li><%= link_to "My Profile", 
+			{:controller => 'account', :action => 'show', 
+			:id => session[:user_id].to_i} %></li>
+	<% end %>
+	
+	
+	<% if params[:action] == 'edit' and params[:controller] == 'account' %>
+		<li><%= link_to "Edit Profile", {:controller => 'account', :action => 'edit'}, 
+			:class => 'here' %></li>
+	<% else %>
+		<li><%= link_to "Edit Profile", {:controller => 'account', 
+			:action => 'edit'} %></li> 
+	<% end %>
+	
+	<% if params[:action] == 'resumes' and params[:controller] == 'resume' %>
+		<li><%= link_to "Resumes", {:controller => 'resume', :action => 'resumes'}, 
+			:class => 'here' %></li>
+	<% else %>
+		<li><%= link_to "Resumes", {:controller => 'resume', 
+			:action => 'resumes'} %></li> 
+	<% end %>
+	
+	<% if params[:action] == 'search_form' and params[:controller] == 'stock' %>
+		<li><%= link_to "Stocks", {:controller => 'stock', :action => 'search_form'}, 
+			:class => 'here' %></li>
+	<% else %>
+		<li><%= link_to "Stocks", {:controller => 'stock', 
+			:action => 'search_form'} %></li> 
+	<% end %>
+	
+	<% if params[:action] == 'inbox' and params[:controller] == 'message' %>
+		<li><%= link_to "Messages", {:controller => 'message', :action => 'inbox'}, 
+			:class => 'here' %></li>
+	<% else %>
+		<li><%= link_to "Messages", {:controller => 'message', 
+			:action => 'inbox'} %></li> 
+	<% end %>
+	
+	<% if params[:controller] == 'update' %>
+		<li><%= link_to "Updates", {:controller => 'update'}, 
+			:class => 'here' %></li>
+	<% else %>
+		<li><%= link_to "Updates", {:controller => 'update'} %></li> 
+	<% end %>
+		
+	<% if params[:action] == 'logout' and params[:controller] == 'login' %>
+		<li><%= link_to "Logout", {:controller => 'login', 
+			:action => 'logout'}, :class => 'here' %></li>
+	<% else %>
+		<li class="logout"><%= link_to "Logout", {:controller => 'login', 
+			:action => 'logout'} %></li> 
+	<% end %>
+	
+</ul>

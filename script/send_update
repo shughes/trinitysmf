@@ -1,0 +1,46 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'mysql'
+require 'action_mailer'
+
+class SimpleMailer < ActionMailer::Base
+	def simple_message(data)
+		from 'Hughes, Samuel <samuel.hughes@trinitysmf.net>'
+		recipients data[:to]
+		subject 'Trinity SMF Network Update'
+		body data[:message]
+	end
+end
+
+def with_db
+	dbh = Mysql.real_connect('localhost', 'trinitz5_shughes', '',
+		'trinitz5_alumniproduction')
+	begin
+		yield dbh
+	ensure
+		dbh.close
+	end
+end
+
+ActionMailer::Base.server_settings = { 
+	:address => 'localhost',
+	:port => 25, 
+	:domain => 'trinitysmf.net'
+}
+
+with_db do |db|
+	res = db.query('select first_name, last_name, email from users where id = 1')
+	res.each { |row| 
+		data = {
+			:to => "#{row[2]}",
+			:message => 'test message'
+		}
+		if(data[:to])
+			SimpleMailer.deliver_simple_message(data)
+		end
+	}
+	res.free
+end
+
+

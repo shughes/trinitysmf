@@ -1,0 +1,26 @@
+<% if @tips.length > 0 %>
+
+<div class="mainText">
+<% for update in @tips %>
+<%= link_to update.subject, :controller => 'stock', :action => 'read_tip', :id => update.id %> 
+<% if update.user_id == session[:user_id].to_i %>
+<%= link_to "(edit ", :controller => 'stock', :action => 'edit_tip', :id => update.id %>
+|
+<%= link_to " delete)", :controller => 'stock', :action => 'delete', :id => update.id %>
+
+<% end %>
+<br>
+posted by <%= link_to "#{update.user.first_name} #{update.user.last_name}", :controller => 'account', :action => 'show', :id => update.user.id %> 
+on <%= update.date_sent %><br><br>
+<% end %>
+</div>
+
+<% else %>
+<div class="mainText">
+	<% if params[:action] == 'home' %>
+	(no new stock tips)
+	<% else %>
+	(no stock tips)
+	<% end %>
+</div>
+<% end %>

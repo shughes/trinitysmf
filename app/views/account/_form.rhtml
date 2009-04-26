@@ -1,0 +1,42 @@
+
+<table class="mainTable">
+	<tr>
+		<td class="left">First name:</td>
+		<td class="right"><%= text_field("user", "first_name") %></td>
+		<td><%= check_box("detail", "first_name") %>*
+	</tr>	
+	<tr>
+		<td class="left">Last name:</td>
+		<td class="right"><%= text_field("user", "last_name") %></td>
+	</tr>
+	<tr>
+		<td class="left">Email:</td>
+		<td class="right"><%= text_field("user", "email") %></td>
+	</tr>	
+	<tr>
+		<td class="left">Grad Year:</td>
+		<td class="right"><%= date_select("user", "graduation_year", 
+			:discard_day => true, :discard_month => true, :include_blank => true) %></td>
+	</tr>
+	<tr>
+		<td class="left">Employer:</td>
+		<td class="right"><%= text_field("user", "employer") %></td>
+	</tr>
+	<tr>
+		<td class="left">Job Title:</td>
+		<td class="right"><%= text_field("user", "job_title") %></td>
+	</tr>
+	<% if params[:pw] %>
+		<tr>
+			<td class="left">Password:</td>
+			<td class="right"><%= password_field("user", "password") %></td>
+		</tr>
+		<tr>
+			<td class="left">Confirm Password:</td>
+			<td class="right"><%= password_field("user", "old_passwordj") %></td>
+		</tr>
+	<% end %>
+</table>
+
+
+

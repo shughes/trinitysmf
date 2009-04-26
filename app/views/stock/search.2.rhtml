@@ -1,0 +1,46 @@
+<div id="pageTitle">
+	Stock Quote
+	<font class="insidePageTitle">
+		<%= link_to 'new quote', :action => 'search_form' %>
+	</font>
+</div><br>
+<% @quotes.each {|key,value| %>
+<%= value.symbol %>
+<% } %>
+
+<table class="mainTable">
+	<tr>
+		<td class="left">Symbol:</td>
+		<td class="middle"><%= @result.getQuoteResult.stockQuote.symbol %></td>
+	</tr>
+	<tr>
+		<td class="left">Company:</td>
+		<td class="middle"><%= @result.getQuoteResult.stockQuote.company %></td>
+	</tr>
+	<tr>
+		<td class="left">Previous Close:</td>
+		<td class="middle"><%= @result.getQuoteResult.stockQuote.prevClose %></td>
+	</tr>
+	<tr>
+		<td class="left">Price (as of <%= @result.getQuoteResult.stockQuote.time %>):</td>
+		<td class="middle"><%= @result.getQuoteResult.stockQuote.price %></td>
+	</tr>
+	<tr>
+		<td class="left">Change:</td>
+		<td class="middle"><%= @result.getQuoteResult.stockQuote.change %></td>
+	</tr>
+	<tr>
+		<td class="left">Day Range:</td>
+		<td class="middle"><%= @result.getQuoteResult.stockQuote.dayRange %></td>
+	</tr>
+	<tr>
+		<td class="left">Year Range:</td>
+		<td class="middle"><%= @result.getQuoteResult.stockQuote.yearRange %></td>
+	</tr>
+	<tr>
+		<td class="left">Description:</td>
+		<td class="description"><%= @result.getQuoteResult.stockQuote.business %></td>
+	</tr>
+
+</table>
+

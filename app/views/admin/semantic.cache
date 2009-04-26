@@ -1,0 +1,15 @@
+;; Object admin/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "admin/"
+  :tables (list 
+   (semanticdb-table "admin.rhtml"
+    :major-mode 'html-mode
+    :tags 'nil
+    :file "admin.rhtml"
+    :pointmax 400
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0beta3"
+  :semanticdb-version "2.0beta3"
+  )

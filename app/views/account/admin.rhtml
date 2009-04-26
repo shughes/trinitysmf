@@ -1,0 +1,15 @@
+<div id="pageTitle">Admin</div><br>
+
+<div class="mainText">
+
+  <%= form_tag({:action => 'admin_update_email'},
+  :multipart => true)  %>
+  CSV File: <%= file_field_tag "file"  %><br><br>
+  <%= submit_tag "Upload file" %>
+  <%= end_form_tag  %>
+
+</div>
+
+<div id="pageTitle">Export File</div><br>
+
+<%= link_to "Export file", :action => 'export_to_csv' %>

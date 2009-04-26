@@ -1,0 +1,34 @@
+<div id="pageTitle">Search Results
+<font class="insidePageTitle">
+<%= link_to "back", :action => "search_form" %>
+</font>
+</div><br>
+
+<% if params[:id] == 'all' %>
+	<% search_helper %>
+<% end %>
+
+<table class="mainTable">
+<% for user in @users %>
+	<tr>
+		<% user_name = "#{user.first_name} #{user.last_name}"%>
+		<td class="left">
+			<% if(!user.graduation_year and !user.employer and !user.job_title and !user.graduated and !user.employment_status and !user.address and !user.city and !user.state and !user.job_description and !user.previous_employer and !user.major and !user.mobile_phone and !user.grad_school) %> 
+				<%= link_to user_name, :action => 'show', :id => user %>
+			<% else %>
+				*<%= link_to user_name, :action => 'show', :id => user %>
+			<% end %>
+		</td>
+		<td class="middle">
+			<%= link_to "view profile", :action => 'show', :id => user %> | 
+			<%= link_to "send message", :controller => 'message', 
+				:action => 'compose', :id => user %> |
+			<%= link_to "send resume", :controller => 'resume', :action => 'send_resume', 
+				:id => user %>	
+		</td>
+	</tr>
+<% end %>
+	<tr>
+		<td colspan="2"><br><font color="red">*Indicates an active profile.</font></td>
+	</tr>
+</table>

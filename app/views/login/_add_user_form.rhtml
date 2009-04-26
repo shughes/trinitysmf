@@ -1,0 +1,39 @@
+<%= error_messages_for 'user' %>
+
+<table>
+	<tr>
+		<td align="right">*First name:</td>
+		<td><%= text_field("user", "first_name") %></td>
+	</tr>	
+	<tr>
+		<td align="right">*Last name:</td>
+		<td><%= text_field("user", "last_name") %></td>
+	</tr>
+	<tr>
+		<td align="right">*Email:</td>
+		<td><%= text_field("user", "email") %></td>
+	</tr>
+	<tr>
+		<td align="right">*Password:</td>
+		<td><%= password_field("user", "password") %></td>
+	</tr>
+	<tr>
+		<td align="right">*Grad Year:</td>
+		<% start_year = Date.today.year+5 %>
+		<% end_year = Date.today.year-40 %>
+		<td><%= date_select("user", "graduation_year", :end_year => end_year,
+			:start_year => start_year, :discard_day => true, 
+			:discard_month => true, :include_blank => true) %></td>
+	</tr>
+	<tr>
+		<td align="right">Employer:</td>
+		<td><%= text_field("user", "employer") %></td>
+	</tr>
+	<tr>
+		<td align="right">Job Title:</td>
+		<td><%= text_field("user", "job_title") %></td>
+	</tr>
+</table>
+
+
+

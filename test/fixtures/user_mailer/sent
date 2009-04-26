@@ -1,0 +1,3 @@
+UserMailer#sent
+
+Find me in app/views/user_mailer/sent.rhtml

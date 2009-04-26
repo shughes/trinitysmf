@@ -1,0 +1,57 @@
+<% if @resume_users.length > 0 %>
+<table class="mainTable">
+	<tr>
+		<td class="left">From:</td>
+		<td class="middle">Date sent:</td>
+		<td class="right">Resume:</td>
+		<td></td>
+	</tr>
+	<% for sender_user in @resume_users %>
+	<tr>
+		<% resume_user = sender_user.user %>
+		<% resume = resume_user.resume %>
+		<% resume_user_name = "#{resume_user.first_name} #{resume_user.last_name}" %>
+		<% if resume %>
+		<td class="left">
+			<% if sender_user.viewed == 0 and params[:action] != 'home' %>
+				<div id="newItemSent">
+			<% end %>
+			<%= link_to resume_user_name, :controller => 'account',
+			:action => 'show', :id => resume_user %>
+		</td>
+		<td class="middle">
+			<% if sender_user.viewed == 0 and params[:action] != 'home' %>
+				<div id="newItemSent">
+			<% end %>
+			<%= sender_user.date_sent %>
+		</td>
+		<td class="middle">
+			<% if sender_user.viewed == 0 and params[:action] != 'home' %>
+				<div id="newItemSent">
+			<% end %>
+			<%= link_to resume.name, :controller => 'resume', 
+			:action => 'open_resume_link', :id => resume_user.id %>
+		</td>
+		<td class="right">
+			<% if sender_user.viewed == 0 and params[:action] != 'home' %>
+				<div id="newItemSent">
+			<% end %>
+			<%= link_to 'open', :controller => 'resume', 
+			:action => 'open_resume_link', :id => sender_user.id %> | 
+			<%= link_to "delete", :controller => 'resume', :action => 'delete_resume_link', 
+			:id => sender_user.id %>
+		</td>
+		</tr>
+		<% end %>
+	<% end %>
+	</table>
+	<% else %>
+	<div class="mainText">
+		<% if params[:action] == 'home' %>
+			(no new resumes)
+		<% else %>
+			(no resumes)
+		<% end %>
+	</div>
+	<% end %>
+	
