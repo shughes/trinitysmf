@@ -1,6 +1,19 @@
 === Trinity SMF Social Network
 
-Requires a certain version of Rails. It can be found here:
-http://s3.amazonaws.com/shughes/trinitysmf/rails.tar.gz
+This is a project I developed in 2006. It's a social network for Trinity Student Managed
+Funds Business students and alumni, developed in Rails. It allows for current students to
+communicate with other students and alumni. They can:
 
-Untar it and move it to the Rails vendor folder.
+* exchange resumes
+* post public stock market advice
+* post public job opportunities
+* send private messages to other users
+* create personal profiles
+* search profiles
+* receive stock quotes
+* write messages on other user profiles
+* etc...
+
+A demo version is located here: http://demo.trinitysmf.net.
+
+
